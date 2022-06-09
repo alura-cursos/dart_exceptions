@@ -22,21 +22,25 @@
 // }
 
 void main() {
+  int i = 0;
   print("Started Main");
   functionOne();
   print("Finished Main");
 }
 
 functionOne() {
+  int j = 25;
   print("Started F01");
-  functionTwo();
+  functionTwo(j);
   print("Finished F01");
 }
 
-functionTwo() {
+functionTwo(int otherJ) {
+  int k = 0;
   print("Started F02");
   for (int i = 1; i <= 5; i++) {
     print(i);
   }
+  otherJ = 50;
   print("Finished F02");
 }
