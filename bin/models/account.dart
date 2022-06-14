@@ -2,6 +2,7 @@ class Account {
   String name;
   double balance;
   bool isAuthenticated;
+  DateTime? createdAt;
 
   Account(
       {required this.name,
@@ -10,5 +11,10 @@ class Account {
 
   editBalance({required value}) {
     balance = balance + value;
+  }
+
+  @override
+  String toString() {
+    return "Account from $name\nBalance: $balance\nAuthenticated: $isAuthenticated\nCreated at: $createdAt";
   }
 }

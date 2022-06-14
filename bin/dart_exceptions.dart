@@ -5,31 +5,30 @@ import 'exceptions/bank_controller_exceptions.dart';
 import 'models/account.dart';
 
 void testingNullSafety() {
-  Account? myAccount;
+  Account? myAccount =
+      Account(name: "Ricarth Lima", balance: 300, isAuthenticated: true);
 
-  // Simulando uma comunicação externa que pode ou não preencher myAccount
   Random rng = Random();
   if (rng.nextInt(10) % 2 == 0) {
-    myAccount =
-        Account(name: "Ricarth Lima", balance: 300, isAuthenticated: true);
+    myAccount.createdAt = DateTime.now();
   }
-  print(myAccount.runtimeType);
 
-  // Não funciona assim
-  // print(myAccount.balance);
+  // Não funciona
+  // print(myAccount.createdAt.day);
 
-  // Assim pode até funcionar, mas é má prática (Vai gerar erros)
-  // print(myAccount!.balance);
+  // Funciona mas é má prática pois pode levantar erro
+  // print(myAccount.createdAt!.day);
 
-  if (myAccount != null) {
-    print("${myAccount.balance}");
+  if (myAccount.createdAt != null) {
+    print(myAccount.createdAt?.day);
   } else {
-    print("Conta nula.");
+    print("Data Nula");
   }
 
-  print(myAccount != null ? myAccount.balance : "Conta nula.");
-
-  print(myAccount?.balance);
+  // Explicar que é uma situação que válida encadear "?"
+  // print(myAccount?.createdAt?.day); // Explicar warning Flow Analisys
+  Account? otherAccount;
+  print(otherAccount?.createdAt?.day);
 }
 
 void main() {
