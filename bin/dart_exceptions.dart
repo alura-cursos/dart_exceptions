@@ -3,8 +3,13 @@ import 'exceptions/bank_controller_exceptions.dart';
 import 'models/account.dart';
 
 void main() {
+  //assert(3 > 4);
+  //assert(3 > 4, "Que pena, 3 não é maior que 4");
+
   // Criando o banco
   BankController bankController = BankController();
+
+  Account testAccount = Account(name: "", balance: 0, isAuthenticated: true);
 
   // Adicionando contas
   bankController.addAccount(
