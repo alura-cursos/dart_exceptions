@@ -9,6 +9,16 @@ void testingNullSafety() {
 
   String cantBeNull = "My String";
   //cantBeNull = null;
+
+  String? canBeNull = "My String";
+  print(canBeNull.runtimeType);
+  canBeNull = null;
+  print(canBeNull.runtimeType);
+
+  Account? myNullAccount = null; // Explicar o warning
+  //print(myNullAccount.balance); // Explicar o erro
+  print(
+      myNullAccount!.balance); // Mostrar o problema, contextualizar no passado
 }
 
 void main() {
