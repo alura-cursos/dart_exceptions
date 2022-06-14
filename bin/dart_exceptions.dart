@@ -14,6 +14,22 @@ void testingNullSafety() {
         Account(name: "Ricarth Lima", balance: 300, isAuthenticated: true);
   }
   print(myAccount.runtimeType);
+
+  // Não funciona assim
+  // print(myAccount.balance);
+
+  // Assim pode até funcionar, mas é má prática (Vai gerar erros)
+  // print(myAccount!.balance);
+
+  if (myAccount != null) {
+    print("${myAccount.balance}");
+  } else {
+    print("Conta nula.");
+  }
+
+  print(myAccount != null ? myAccount.balance : "Conta nula.");
+
+  print(myAccount?.balance);
 }
 
 void main() {
