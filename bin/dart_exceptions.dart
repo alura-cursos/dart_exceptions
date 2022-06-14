@@ -24,13 +24,13 @@ void main() {
 
     print("Transação concluída com sucesso");
   } on SenderIdInvalidException catch (e) {
-    print(e.idSender + ": ID inválido.");
+    print(e.message);
   } on ReceiverIdInvalidException catch (e) {
-    print(e.idReceiver + ": ID inválido.");
+    print(e);
   } on SenderNotAuthenticatedException catch (e) {
-    print(e.idSender + " Usuário não autenticado.");
+    print(e);
   } on SenderBalanceLowerThanAmountException catch (e) {
-    print("Saldo de ${e.idSender} inválido.");
+    print(e);
   } catch (e) {
     print("Erro desconhecido.");
   }
