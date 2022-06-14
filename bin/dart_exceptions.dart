@@ -1,4 +1,5 @@
 import 'controllers/bank_controller.dart';
+import 'exceptions/bank_controller_exceptions.dart';
 import 'models/account.dart';
 
 void main() {
@@ -17,9 +18,20 @@ void main() {
           Account(name: "Caio Couto", balance: 600, isAuthenticated: true));
 
   // Fazendo transferência
-  bool result = bankController.makeTransfer(
-      idSender: "Kako", idReceiver: "Ricarth", amount: 700);
+  try {
+    bankController.makeTransfer(
+        idSender: "Kako", idReceiver: "Ricarth", amount: 200);
 
-  // Observando resultado
-  print(result);
+    print("Transação concluída com sucesso");
+  } on SenderIdInvalidException catch (e) {
+    print(e.idSender + ": ID inválido.");
+  } on ReceiverIdInvalidException catch (e) {
+    print(e.idReceiver + ": ID inválido.");
+  } on SenderNotAuthenticatedException catch (e) {
+    print(e.idSender + " Usuário não autenticado.");
+  } on SenderBalanceLowerThanAmountException catch (e) {
+    print("Saldo de ${e.idSender} inválido.");
+  } catch (e) {
+    print("Erro desconhecido.");
+  }
 }
