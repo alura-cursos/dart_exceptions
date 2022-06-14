@@ -21,8 +21,6 @@
 //   print(result);
 // }
 
-import 'dart:io';
-
 void main() {
   int i = 0;
   print("Started Main");
@@ -33,20 +31,16 @@ void main() {
 function01() {
   int j = 25;
   print("Started F01");
+  //function02(j); Usaremos essa linha para relembrar o erro estourando
   try {
     function02(j);
-  } on FormatException catch (e) {
-    print("------------------");
-    print(e.message);
-    print(e.source);
+  } catch (e, s) {
     print(e.toString());
-    print("------------------");
-  } on HttpException catch (e) {
-    print(e.uri);
-  } on IOException catch (e) {
-    print(e.toString());
-  } catch (e) {
-    print(e.toString());
+    print(s);
+    rethrow;
+  } finally {
+    print(
+        "Essa linha será executada independente de se capturar ou não o erro.");
   }
 
   print("Finished F01");
