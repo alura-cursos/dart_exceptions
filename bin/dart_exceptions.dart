@@ -31,6 +31,7 @@ void main() {
 function01() {
   int j = 25;
   print("Started F01");
+  // Trazer o try para cá
   function02(j);
   print("Finished F01");
 }
@@ -38,9 +39,15 @@ function01() {
 function02(int otherJ) {
   int k = 0;
   print("Started F02");
+
+  // Trazer o try para cá
   for (int i = 1; i <= 5; i++) {
     print(i);
-    double amount = double.parse("Not a number.");
+    try {
+      double amount = double.parse("Not a number.");
+    } on FormatException {
+      print("Ops! Tentamos fazer uma conversão não válida");
+    }
   }
   otherJ = 50;
   print("Finished F02");
