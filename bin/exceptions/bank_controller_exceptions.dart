@@ -43,6 +43,21 @@ class SenderNotAuthenticatedException implements Exception {
   }
 }
 
+class ReceiverNotAuthenticatedException implements Exception {
+  static const String report = "ReceiverNotAuthenticatedException";
+
+  String idReceiver;
+  late String message;
+  ReceiverNotAuthenticatedException({required this.idReceiver}) {
+    message = "$report\nID Sender: $idReceiver";
+  }
+
+  @override
+  String toString() {
+    return message;
+  }
+}
+
 class SenderBalanceLowerThanAmountException implements Exception {
   static const String report = "SenderBalanceLowerThanAmountException";
 

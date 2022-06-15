@@ -15,7 +15,7 @@ void main() {
   bankController.addAccount(
       id: "Ricarth",
       account:
-          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: true));
+          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: false));
 
   bankController.addAccount(
       id: "Kako",
@@ -33,6 +33,8 @@ void main() {
   } on ReceiverIdInvalidException catch (e) {
     print(e);
   } on SenderNotAuthenticatedException catch (e) {
+    print(e);
+  } on ReceiverNotAuthenticatedException catch (e) {
     print(e);
   } on SenderBalanceLowerThanAmountException catch (e) {
     print(e);
